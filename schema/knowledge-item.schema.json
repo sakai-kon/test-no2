@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sakai-kon/test-no2/blob/main/schema/knowledge-item.schema.json",
+  "title": "Junior High Grade 7 Knowledge Item",
+  "type": "object",
+  "required": [
+    "id",
+    "unit_code",
+    "unit",
+    "topic",
+    "level",
+    "explanation",
+    "key_points",
+    "questions",
+    "subject",
+    "grade",
+    "keywords"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "unit_code": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "基礎",
+        "標準",
+        "計算",
+        "応用"
+      ]
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "formulas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subject": {
+      "type": "string",
+      "enum": [
+        "理科",
+        "数学"
+      ]
+    },
+    "grade": {
+      "type": "integer",
+      "const": 7
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "prompt",
+          "answer",
+          "explanation",
+          "difficulty",
+          "tags"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "type": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "answer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "difficulty": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
