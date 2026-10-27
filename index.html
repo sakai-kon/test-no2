@@ -202,6 +202,7 @@
         let questions = allQuestions().filter(function(question){
           if (question.subject !== state.subject || !allowedItems.has(question.item_id)) return false;
           if (state.difficulty !== "all" && Number(question.difficulty) !== Number(state.difficulty)) return false;
+          if (state.viewFilter === "review" && !reviewQuestions.includes(question.id)) return false;
           return !q || normalize([question.prompt,question.answer,question.explanation,question.unit,question.topic].concat(question.tags || []).join(" ")).includes(q);
         });
         return questions;
@@ -269,6 +270,7 @@
           '<div class="card-footer"><button class="done-toggle ' + (isDone ? "done" : "") + '" type="button" data-done="' + escapeHtml(item.id) + '" aria-pressed="' + isDone + '">' + (isDone ? "✓ 覚えた！" : "○ 覚えた！") + '</button><span class="count">問題 ' + (item.questions || []).length + '問</span></div></article>';
       }
       function renderQuiz(){
+        savePreferences();
         const questions = getFilteredQuestions();
         state.quizDeck = questions;
         if (!questions.length){
@@ -319,7 +321,7 @@
         renderResults();
       }
       function savePreferences(){
-        writeStore(STORE_KEYS.preferences,{subject:state.subject,unit:state.unit,mode:state.mode,query:state.query,difficulty:state.difficulty,viewFilter:state.viewFilter});
+        writeStore(STORE_KEYS.preferences,{subject:state.subject,unit:state.unit,mode:state.mode,query:state.query,difficulty:state.difficulty,viewFilter:state.viewFilter,quizIndex:state.quizIndex});
       }
       function renderQuickFilters(){
         const database=state.data[state.subject];
@@ -345,6 +347,7 @@
           if(typeof preferences.query==="string") state.query=preferences.query;
           if(["all","1","2","3","4","5"].includes(String(preferences.difficulty))) state.difficulty=String(preferences.difficulty);
           if(typeof preferences.unit==="string") state.unit=preferences.unit;
+          if(Number.isInteger(preferences.quizIndex) && preferences.quizIndex>=0) state.quizIndex=preferences.quizIndex;
         }
         const activeData=state.data[state.subject];
         if(activeData && state.unit!=="all" && !activeData.items.some(function(item){return item.unit===state.unit;})) state.unit="all";
