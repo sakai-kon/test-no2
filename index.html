@@ -145,7 +145,7 @@
         catch (_) { return fallback; }
       }
       function writeStore(key, value){ try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) {} }
-      function dateKey(){ const d=new Date(); return d.getFullYear()+\"-\"+String(d.getMonth()+1).padStart(2,\"0\")+\"-\"+String(d.getDate()).padStart(2,\"0\"); }
+      function dateKey(){ const d=new Date(); return [d.getFullYear(),d.getMonth()+1,d.getDate()].map(function(n,i){return i===0?String(n):String(n).padStart(2,"0");}).join("-"); }
       let learned = readStore(STORE_KEYS.learned, []);
       let bookmarks = readStore(STORE_KEYS.bookmarks, []);
       let reviewQuestions = readStore(STORE_KEYS.review, []);
