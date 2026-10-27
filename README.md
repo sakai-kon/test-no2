@@ -44,7 +44,8 @@
 
 1. リポジトリの **Settings → Pages** を開きます。
 2. **Build and deployment → Source** を **GitHub Actions** に設定します。
-3. **Actions** タブで「Deploy study site to GitHub Pages」の実行を確認します。以降、`index.html` や `data/` が `main` に更新されると自動で再公開されます。
+3. **Actions** タブ → **Deploy study site to GitHub Pages** → **Run workflow** から初回の公開を手動実行します。初回はPagesが未設定だと自動実行が失敗するため、この設定と手動実行が必要です。
+4. 実行が成功すると公開URLが表示されます。以降、`index.html` や `data/` が `main` に更新されると自動で再公開されます。
 
 公開先URLは通常 [https://sakai-kon.github.io/test-no2/](https://sakai-kon.github.io/test-no2/) です。最初の公開が完了するまでは、このURLで表示できないことがあります。リポジトリが公開設定になっていることも確認してください。
 
