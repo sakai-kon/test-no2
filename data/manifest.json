@@ -1,19 +1,19 @@
 {
   "schema_version": "1.0.0",
   "database_name": "中学1年 理科・数学 学習データベース",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "language": "ja-JP",
   "grade_level": "日本の中学校第1学年相当",
   "repository": "sakai-kon/test-no2",
   "created_at": "2026-10-27",
-  "status": "初版・継続拡張中",
+  "status": "初版・主要単元を広く収録、継続拡張中",
   "subjects": [
     {
       "id": "science",
       "name": "理科",
       "path": "data/science.json",
-      "knowledge_items": 22,
-      "questions": 44,
+      "knowledge_items": 28,
+      "questions": 56,
       "units": [
         "生物の観察と分類",
         "植物の体のつくりとはたらき",
@@ -28,8 +28,8 @@
       "id": "math",
       "name": "数学",
       "path": "data/math.json",
-      "knowledge_items": 25,
-      "questions": 50,
+      "knowledge_items": 30,
+      "questions": 60,
       "units": [
         "正の数・負の数",
         "文字と式",
@@ -69,5 +69,7 @@
   "sources_and_scope": {
     "curriculum_reference": "https://www.mext.go.jp/a_menu/shotou/new-cs/1387016.htm",
     "note": "学習指導要領を範囲の目安として、問題と説明は独自作成。教科書会社・学校の年間計画により配列や扱う深さは異なる。収録内容は初版であり、完全網羅を保証するものではない。"
-  }
+  },
+  "total_knowledge_items": 58,
+  "total_questions": 116
 }
